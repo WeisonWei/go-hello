@@ -13,3 +13,12 @@ func SetupRouter() *gin.Engine {
 	})
 	return router
 }
+
+func server() {
+	router := gin.Default()
+
+	router.GET("/", func(context *gin.Context) {
+		context.String(http.StatusOK, "hello gin")
+	})
+	router.Run()
+}
