@@ -10,7 +10,7 @@ import (
 )
 
 /**
- * https://juejin.im/post/6844904166985318414
+ * @see https://juejin.im/post/6844904166985318414
  */
 
 func main() {
@@ -36,11 +36,16 @@ func main() {
 
 	typeChange()
 
+	exchangeValues()
+
 	//goroutine
-	go say("world")
-	say("hello")
+	goroutine()
 
 	//channel
+	channel()
+}
+
+func channel() {
 	s := []int{7, 2, 8, -9, 4, 0}
 
 	c := make(chan int)
@@ -60,6 +65,11 @@ func main() {
 	for i := range c {
 		fmt.Println(i)
 	}
+}
+
+func goroutine() {
+	go say("world")
+	say("hello")
 }
 
 func say(s string) {
@@ -379,4 +389,13 @@ func typeChange() {
 
 	mean = float32(sum) / float32(count)
 	fmt.Printf("mean 的值为: %f\n", mean)
+}
+
+func exchangeValues() {
+	var a int = 100 //新郎的信物a
+	var b int = 200 //新娘的信物b
+
+	b, a = a, b //新郎新娘交换礼物
+
+	fmt.Println(a, b)
 }
